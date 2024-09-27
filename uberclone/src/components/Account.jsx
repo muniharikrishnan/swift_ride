@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faPhone, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
- // Create a separate CSS file for styling
- import '../styles/Account.css';
+// Create a separate CSS file for styling
+import '../styles/Account.css';
+
 const Account = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -24,8 +25,9 @@ const Account = () => {
 
   const handleLogout = () => {
     // Handle logout logic (e.g., clearing tokens, redirecting, etc.)
-    // For now, just navigating to the home page
-    navigate('/');
+    // For now, just navigating to the signup page
+    // You can add any logout logic here (e.g., clearing tokens)
+    navigate('/signup'); // Redirect to signup page
   };
 
   return (
