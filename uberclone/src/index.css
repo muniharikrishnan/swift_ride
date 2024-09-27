@@ -1,0 +1,488 @@
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: poppins,sans-serif;
+        box-sizing: border-box;
+        /* background: #2e2e2e;
+        color: #f0b429; */
+    }
+    html{
+        /* background-color: #2e2e2e; */
+        min-height: 100%;
+    }
+
+    body{
+        min-height: 100vh;
+    }
+    .header{
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: #f0b429 2px solid;
+        background-color: #2e2e2e;
+        /* box-shadow: rgba(28, 80, 168, 0.25) 0px 54px 55px, rgba(202, 30, 30, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    }
+    .navbar, .navbar2{
+        display: flex;
+        float: left;
+        gap: 200px;
+        margin: 20px;
+        font-size: 1.5rem;
+        /* box-shadow: 0 0 20px rgba(0,0,0,0.125); */
+    }
+    .navbar a, .navbar2 a{
+        text-decoration: none;
+        color: #f0b429; 
+        
+    }
+    .navbar a:hover, .navbar2 a:hover{
+        border-bottom: 2px solid #ccc;
+    }
+    .navbar2{
+        display: flex;
+        gap: 15px;
+        padding: 10px;
+        margin: 10px;
+    }
+    #map{
+        background-image: url("stadtplan-hamburg-daten.png");
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+    .container{
+        max-width: 600px    ;
+        width: 100%;
+        height: 680px;
+        position: relative;
+        background-color: #2e2e2e;
+    }
+    .container-text2 h1{
+        display: flex;
+        flex-direction: column;
+        font-size: 3 rem;
+    }
+    section button{
+        background-color: #2e2e2e;
+        width: 50%;
+    }
+    .container-text2{
+        position: absolute;
+        /* width: 400px;     */
+        top: 5%;
+        bottom: 20%;
+        /* left: 7%;     */
+        color: #f0b429;
+        background-color: #2e2e2e; ;
+        max-height: 30vh;
+        height: 100%;
+        padding: 20px;
+        border-radius: 5px;
+        align-items: center;
+        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    }
+    .side-nav
+    {
+        color: #f0b429;
+        font-size: 1.4rem;
+        font-weight: 500;
+        /* background-color: #0093E9; */
+    }
+    .promo button{
+        width: 100%;
+    }
+    .side-nav ul a{
+        color: #2e2e2e;
+    }
+    .profile{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+    .profile a{
+        text-decoration: none;
+        color: #2e2e2e;
+    }
+    .container-text2 input[type="text"] {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px 40px 10px 40px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+    }
+    .content h5{
+        opacity: 70%;
+    }
+    .container-text2 input[type="text"]::placeholder {
+        color: #999;
+    }
+
+    .container-text2 input[type="text"]:focus {
+        outline: none;
+        border-color: #66afe9;
+        box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+    }
+    .container-text2 button{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .input-icon {
+        position: relative;
+    }
+
+    .input-icon i {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        /* color: #999; */
+        color: #f0b429;
+    }
+    .container-btn button:hover{
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    }
+
+    .vertical{
+        width: 3px;
+        height: 300px;
+        background-color: #f0b429   ;
+        position: absolute;
+        left: 10%;
+        top: 8%;
+    }
+    .footer-icon-container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        left: 9%;
+        bottom: 15%;
+        color: #f0b429;
+        font-size: xx-large;
+    }
+        
+    .container-text1{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 15%;
+        top: 5%;
+        font-size:30px ;
+    }
+    .container-text3{
+        width: 800px;
+        height: 90px;
+        background-color: black;
+        opacity: 0.3;
+        border-radius: 5px;
+        position: relative;
+        top: 23%;
+        left: 15%;
+    }
+
+    .contact-us{
+        position: absolute;
+        top: 38%;
+        left: 17%;
+        font-size: 2em;
+        color: #f0b429;
+    }
+    .Contact-us1{
+        width: 500px;
+        height: 550px;
+        background-color: #2e2e2e;
+        opacity: 90%;
+        position: absolute;
+        left: 56%;
+        top: 8%;
+        border-radius: 20px;
+    }
+    .inputbox1{
+        position: absolute;
+        top: 22%;
+        left: 62%;
+        border: none;
+        outline: none;
+        width: 300px;
+        height: 40px;
+        background-color: #ccc;
+        opacity: 0.6;
+        color: #f0b429;
+        border-radius: 20px;
+        padding: 20px;
+        
+    }
+    .inputbox2{
+        position: absolute;
+        top: 40%;
+        left: 62.1%;
+        border: none;
+        outline: none;
+        width: 300px;
+        height: 40px;
+        background-color: #ccc;
+        opacity: 0.6;
+        color: #2e2e2e;
+        border-radius: 20px;
+        padding: 20px;
+    }
+    .inputbox3{
+        position: absolute;
+        top: 60%;
+        left: 62.1%;
+        border: none;
+        outline: none;
+        width: 300px;
+        height: 80px;
+        background-color: #ccc;
+        opacity: 0.6;
+        color: #2e2e2e;
+        border-radius: 20px;
+        padding: 20px;
+
+    }
+    .name, .email, .text{
+        position:absolute;
+        color: #f0b429;
+        font-size: x-large;
+    }
+    .name{
+        top: 15%;
+        left: 69%;
+    }
+    .email{
+        top: 33%;
+        left: 69%;
+    }
+    .text{
+        top: 52%;
+        left: 68%;
+    }
+    .contact-btn{
+        width: 150px;
+        height: 35px;
+        border: none;
+        border-radius: 10px;
+        /* background-color: #0093E9; */
+        background-color: #f0b429;
+        color: rgb(25, 24, 24);
+        /* background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
+        position: absolute;
+        top: 78%;
+        left: 67.5%;
+
+    }
+    .contact-btn:hover{
+        color: #ccc;
+        background-color: #2e2e2e;
+        background-image: linear-gradient(90deg, #2e2e2e 40%, #f0b429 100%);
+
+    }
+    .container-rides{
+        gap: 50px;
+    }
+    #ride{
+        background-color: #2e2e2e;
+        color: #f0b429;
+        overflow-y: scroll;
+        white-space: nowrap;
+        /* padding: 20px; */
+        /* gap: 5px; */
+    }
+    .vehicle{
+        display: flex;
+        cursor: pointer;
+        justify-content: space-between;
+        /* border: #999 1px solid; */
+        border-radius: 20px;
+        margin-bottom: 5px;
+        padding: 5px;
+        /* gap: 10px; */
+        /* justify-self: unset; */
+    }
+    .vehicle:hover, .vehicle:focus{
+        border: 2px solid #f0b429;
+    }
+    .container-rides h5{
+        color: #ccc;
+        opacity: 70%;
+    }
+    .container-rides img{
+        width: 100px;
+        height: 100px;
+        
+    }
+    .container-rides h3{
+        font-size: large;
+    }
+.payment a{
+    text-decoration: none;
+    color: #f0b429;
+    /* width: 300px; */
+    /* width: 40%; */
+    padding: 5px;
+    text-align: center;
+    /* border: #f0b429 2px solid; */
+}
+.payment button{
+    width: 100%;
+    color: #2e2e2e;
+    background-color: #f0b429;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
+.payment{
+    margin-top: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+    color: #f0b429;
+    /* border: #f0b429 2px solid; */
+    box-shadow: #f0b429;
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 10px;
+}
+.r{
+    height: 85vh;
+    /* height: 100%; */
+}
+
+.head{
+    display: flex;
+    gap: 570px;
+
+}
+.drop{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-img-top{
+    width: 800px;
+    height: 150px;
+}
+.card{
+    width: 100%;
+    height: 10px;
+}
+.history button, .card button{
+    background-color: #2e2e2e;
+    padding: 5px;
+    color: #f0b429;
+    border-radius: 5px;
+    border: none;
+}
+
+.history button:hover, .card button:hover{
+    background-color: #f0b429;
+    color: #2e2e2e;
+}
+
+.trips-body{
+    position: relative;
+    /* background-color: #fe5a5a;   */
+
+    width: 90%;
+    left: 5%;
+    
+}
+.container-trips a{
+    text-decoration: none;
+    font-size: 2rem;
+    color: #2e2e2e;
+}
+.personal-info{
+    display: flex;
+    flex-direction: column;
+}
+#book{
+    text-decoration: none;
+    color: #2e2e2e;
+    background-color: #f0b429;
+    padding: 5px;
+    border-radius: 5px;
+}
+#book:hover{
+    background-color: #2e2e2e;
+    color: #f0b429;
+}
+.tax-btn-group{
+    border-bottom: #c2bdbd 2px  solid;
+}
+#personal, #business {
+    background-color: white;
+    padding: 10px;
+    border: none;
+    font-size: 1.2rem;
+    margin-top: 20px;  
+    /* background-color: ; */
+    /* border-bottom: #2e2e2e 2px solid; */
+
+}
+#personal:focus, #business:focus{
+    border-bottom: #2e2e2e 4px solid;
+}
+#personal:focus-visible{
+    outline: none;
+    border-bottom: #2e2e2e 4px solid;
+}
+
+.container-pay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    
+}
+.add-payment{
+    color: #ccc;
+    border: rgb(90, 90, 101) 2px solid;
+    padding: 50px;
+}
+.methods{
+    margin-top: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.methods a{
+    text-decoration: none;
+    background-color: #ccc;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 20px;
+    color: #333;
+}
+.methods a:hover{
+    background-color: #9e8a8a0b;
+    color: #f0b429;
+    border: #ccc 2px solid;
+}
+.container-settings button{
+    padding: 10px;
+    color: black;
+    background-color: rgba(84, 77, 77, 0.441);
+    border: none;
+    border-radius: 5px;
+}
+#logout{
+    color: red;
+    background-color: rgba(84, 77, 77, 0.441);
+}
+#save{
+    color: whitesmoke;
+}
+
+.history .past{
+    width: 100px;
+    background-color:#2e2e2e ;
+}

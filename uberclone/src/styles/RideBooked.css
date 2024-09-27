@@ -1,0 +1,232 @@
+Add your existing styles here
+
+.ride-booked-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .ride-booked-navbar {
+    background-color: #2e2e2e;
+    color: #f0b429;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .ride-booked-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .map-section {
+    flex: 2;
+    height: calc(100vh - 60px); /* Adjusted for navbar height */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .ride-details {
+    flex: 1;
+    height: calc(100vh - 60px); /* Adjusted for navbar height */
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    background-color: #2e2e2e;
+    color: white;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+  }
+  
+  h2, h1, h3 {
+    color: #f0b429;
+  }
+  
+  .map-section h1 {
+    color: #2e2e2e;
+  }
+  
+  .driver-otp {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .driver-details p {
+    margin-bottom: 5px;
+  }
+  
+  .driver-details {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .otp {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .otp p {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .driver-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .ride-btn{
+    display: flex;
+    justify-content: space-around;
+  }
+  .dropdown-ride {
+    margin: 10px 0;  
+    /* display: flex; */
+    /* gap: 10px; */
+    position: relative;
+  }
+  
+  .dropdown-ride button {
+    width: 100%;
+    background-color: #a7a49d;
+    color: #2e2e2e;
+    border: none;
+    padding: 10px;
+  }
+  
+  .dropdown-ride button:hover {
+    background-color: #2e2e2e;
+    color: #f0b429;
+  }
+  
+  .dropdown-content-tip,
+  .dropdown-content-cancel {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color:wheat;
+    color: #2e2e2e;
+    width: max-content;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-ride:hover .dropdown-content-tip,
+  .dropdown-ride:hover .dropdown-content-cancel {
+    display: flex;
+  }
+  
+  .dropdown-content-tip a,
+  .dropdown-content-cancel a {
+    color: #2e2e2e;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content-tip a:hover,
+  .dropdown-content-cancel a:hover {
+    background-color: #f0b429;
+    color: #2e2e2e;
+  }
+  
+  @media (max-width: 768px) {
+    .ride-booked-container {
+      flex-direction: column;
+    }
+  
+    .map-section,
+    .ride-details {
+      width: 100%;
+      height: auto;
+    }
+  
+    .driver-otp {
+      flex-direction: column;
+    }
+  
+    .driver-details,
+    .otp {
+      width: 100%;
+    }
+  }
+  
+
+  /* RideBooked.css */
+/* RideBooked.css */
+
+.ride-booked-container {
+  position: relative; /* Ensure relative positioning for absolute elements */
+}
+
+.loading-overlay {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top of everything */
+}
+
+/* .taxi-animation {
+  width: 100%; 
+  height: 100%;
+  background-image: url('src\assets\Car toy.mp4'); Replace with your taxi animation image
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  animation: moveTaxi 1s linear infinite; /* Adjust animation duration and timing function as needed */
+/* } */ 
+
+@keyframes moveTaxi {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50px); /* Adjust distance taxi moves horizontally */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* .loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+} */
+
+.taxi-loading-animation {
+  width: 300px;
+  height: 300px;
+  border: none;
+  /* margin-bottom: 20px; */
+}
+
+.map-section, .ride-details {
+  width: 100%;
+  padding: 20px;
+}

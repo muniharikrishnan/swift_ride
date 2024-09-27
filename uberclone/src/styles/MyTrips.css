@@ -1,0 +1,81 @@
+.head{
+    display: flex;
+    gap: 470px;
+
+}
+.dropdown-content a i{
+    margin-right: 10px;
+  }
+.drop{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-img-top{
+    height: 150px;
+}
+.card{
+    width: 100%;
+    height: 10px;
+}
+.history button, .card button{
+    background-color: #2e2e2e;
+    padding: 5px;
+    color: #f0b429;
+    border-radius: 5px;
+    border: none;
+}
+
+.history button:hover, .card button:hover{
+    background-color: #f0b429;
+    color: #2e2e2e;
+}
+
+.trips-body{
+    position: relative;
+    /* background-color: #fe5a5a;   */
+
+    width: 90%;
+    left: 5%;
+    
+}
+.container-trips a{
+    text-decoration: none;
+    font-size: 2rem;
+    color: #2e2e2e;
+}
+.personal-info{
+    display: flex;
+    flex-direction: column;
+}
+#book{
+    text-decoration: none;
+    color: #2e2e2e;
+    background-color: #f0b429;
+    padding: 5px;
+    border-radius: 5px;
+}
+#book:hover{
+    background-color: #2e2e2e;
+    color: #f0b429;
+}
+.tax-btn-group{
+    border-bottom: #c2bdbd 2px  solid;
+}
+#personal, #business {
+    background-color: white;
+    padding: 10px;
+    border: none;
+    font-size: 1.2rem;
+    margin-top: 20px;  
+    /* background-color: ; */
+    /* border-bottom: #2e2e2e 2px solid; */
+
+}
+#personal:focus, #business:focus{
+    border-bottom: #2e2e2e 4px solid;
+}
+#personal:focus-visible{
+    outline: none;
+    border-bottom: #2e2e2e 4px solid;
+}
