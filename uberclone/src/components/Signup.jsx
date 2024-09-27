@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import '../styles/Signup.css'
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -36,7 +37,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="signup-container">
       <h2>Signup</h2>
       <form onSubmit={handleSignup}>
         <div>
@@ -87,6 +88,12 @@ const Signup = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit">Signup</button>
       </form>
+
+      {/* New Section: Already have an account */}
+      <p className="already-account">
+        Already have an account?{' '}
+        <Link to="/login" className="login-link">Login here</Link>
+      </p>
     </div>
   );
 };

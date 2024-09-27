@@ -1,0 +1,96 @@
+/* Container for the signup form */
+.signup-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 40px auto;
+    text-align: center; /* Align form content to the center */
+  }
+  
+  /* Form title */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form structure */
+  form {
+    display: inline-block; /* Center the form */
+    width: 100%; /* Make the form take full width */
+  }
+  
+  /* Each form group */
+  form div {
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  /* Label styling */
+  label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+    text-align: left; /* Align label text to the left */
+  }
+  
+  /* Input fields styling */
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 70%; /* Set input width to 70% */
+    display: block;
+    margin: 0 auto; /* Center inputs */
+  }
+  
+  /* Focus effect on input */
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Error message styling */
+  p {
+    color: red;
+    font-size: 14px;
+    margin-top: -5px;
+  }
+  
+  /* Submit button */
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 80px; /* Set button width to 40px */
+    display: block;
+    margin: 10px auto; /* Center the button */
+  }
+  
+  /* Hover effect for button */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 480px) {
+    .signup-container {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    input,
+    button {
+      width: 90%; /* Full width on small screens */
+    }
+  }
+  

@@ -10,12 +10,15 @@ import RideBooked from './components/RideBooked';
 import Wallet from './components/Wallet';
 import { Modal, Button } from 'react-bootstrap';
 
+
 // Importing assets for vehicle images
 import tukTukImage from './assets/TukTuk_Green_v1.png';
 import uberGoImage from './assets/UberGo_v1.png';
 import primeSUVImage from './assets/package_UberComfort_new_2022.png';
 import bikeImage from './assets/Uber_Moto_India1.png';
 import Account from './components/Account'; // Adjust the path as necessary
+import Signup from './components/Signup';
+import Login from './components/Login'
 
 // Initialize Socket.IO client
 const socket = io('http://localhost:5000'); // Replace with your backend URL
@@ -281,6 +284,7 @@ function App() {
                 <Link className="dropdown-item" to="/account"><FontAwesomeIcon icon={faUser} /> Manage account</Link>
                 <Link className="dropdown-item" to="/support"><FontAwesomeIcon icon={faHeadset} /> Support</Link>
                 <Link className="dropdown-item" to="/settings"><FontAwesomeIcon icon={faGear} /> Settings</Link>
+                
               </div>
             </div>
           </div>
@@ -291,6 +295,8 @@ function App() {
           <Route path="/ride-booked" element={<RideBooked />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/Login" element={<Login />} />
         </Routes>
       </div>
     </Router>
