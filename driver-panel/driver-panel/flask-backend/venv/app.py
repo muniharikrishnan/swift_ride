@@ -20,9 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key_here'  # Replace with a secure secret key for JWT encoding
 
 # Google OAuth configuration
-app.config['GOOGLE_CLIENT_ID'] = '122864627944-u3hjskkhp5627d5vcv7l9m0jjvshflvo.apps.googleusercontent.com'
-app.config['GOOGLE_CLIENT_SECRET'] = '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'
-app.config['GOOGLE_DISCOVERY_URL'] = 'https://accounts.google.com/.well-known/openid-configuration'
+
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
