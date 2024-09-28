@@ -1,14 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-import psycopg2
+from datetime import datetime
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 
 app = Flask(__name__)
 CORS(app)  # To handle cross-origin requests
 
 # Configure the PostgreSQL database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost:5432/userpanel'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456srikrishna$@localhost:5432/userpanel'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Change this to a strong secret key
+jwt = JWTManager(app)
 
 db = SQLAlchemy(app)
 
@@ -18,9 +22,10 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(120), nullable=False, unique=True)
-    phone = db.Column(db.String(15), nullable=False, unique=True)
-    password = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    phone = db.Column(db.String(15), nullable=False)
+    password = db.Column(db.Text, nullable=False)  # Storing passwords in plain text
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 # Create API endpoint for signup
 @app.route('/api/signup', methods=['POST'])
@@ -32,19 +37,21 @@ def signup():
     phone = data.get('phone')
     password = data.get('password')
 
-    if not (first_name and last_name and email and phone and password):
+    # Validate that all fields are provided
+    if not all([first_name, last_name, email, phone, password]):
         return jsonify({'message': 'Missing required fields'}), 400
 
-    # Check if the user already exists
-    if User.query.filter_by(email=email).first() or User.query.filter_by(phone=phone).first():
+    # Check if the user already exists (by email or phone)
+    if User.query.filter((User.email == email) | (User.phone == phone)).first():
         return jsonify({'message': 'User already exists'}), 400
 
+    # Create a new user and add to the session
     new_user = User(
         first_name=first_name,
         last_name=last_name,
         email=email,
         phone=phone,
-        password=password
+        password=password  # Store plain text password
     )
 
     try:
@@ -62,13 +69,37 @@ def login():
     email = data.get('email')
     password = data.get('password')
 
-    user = User.query.filter_by(email=email, password=password).first()
+    # Check if the user exists
+    user = User.query.filter_by(email=email).first()
 
-    if user:
-        return jsonify({'message': 'Login successful'}), 200
+    # Verify the password (plain text comparison)
+    if user and user.password == password:
+        # Create a JWT token for the user
+        access_token = create_access_token(identity=user.id)
+        return jsonify({'message': 'Login successful', 'access_token': access_token}), 200
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
 
-if __name__ == '__main__':
+# Get user details (protected by JWT)
+@app.route('/api/user', methods=['GET'])
+@jwt_required()  # Ensure this route requires a valid JWT token
+def get_user_details():
+    current_user_id = get_jwt_identity()  # Get the user ID from the token
+    user = User.query.get(current_user_id)
+
+    if user:
+        return jsonify({
+            'firstName': user.first_name,
+            'lastName': user.last_name,
+            'email': user.email,
+            'phone': user.phone
+        }), 200
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
+# Ensure tables are created
+with app.app_context():
     db.create_all()
-    app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)  # Run the server on port 5001

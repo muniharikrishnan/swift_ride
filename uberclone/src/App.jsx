@@ -19,6 +19,7 @@ import bikeImage from './assets/Uber_Moto_India1.png';
 import Account from './components/Account'; // Adjust the path as necessary
 import Signup from './components/Signup';
 import Login from './components/Login'
+import Dashboard from './components/Dashboard';
 
 // Initialize Socket.IO client
 const socket = io('http://localhost:5000'); // Replace with your backend URL
@@ -297,6 +298,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Dashboard" element={<Dashboard/>}></Route>
         </Routes>
       </div>
     </Router>

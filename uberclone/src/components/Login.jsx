@@ -11,10 +11,16 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // Check if fields are empty
+    if (!email || !password) {
+      setError('Please fill in all the fields.');
+      return;
+    }
+
     const userDetails = { email, password };
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://localhost:5001/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,14 +28,17 @@ const Login = () => {
         body: JSON.stringify(userDetails),
       });
 
-      const data = await response.json();
       if (response.ok) {
+        const data = await response.json();
+        // Save token in localStorage
+        localStorage.setItem('token', data.access_token); // Store token in localStorage
         navigate('/dashboard'); // Redirect to dashboard after successful login
       } else {
-        setError(data.message || 'Failed to login');
+        const data = await response.json();
+        setError(data.message || 'Failed to login. Please check your credentials.');
       }
     } catch (error) {
-      setError('An error occurred during login');
+      setError('An error occurred during login. Please try again later.');
     }
   };
 
@@ -59,7 +68,6 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
 
-      {/* New Section: Don't have an account */}
       <p className="no-account">
         Don't have an account?{' '}
         <Link to="/signup" className="signup-link">Sign up here</Link>

@@ -1,0 +1,81 @@
+.dashboard-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2e2e2e; /* Dark background */
+    margin: 0;
+    padding: 0;
+    color: #dcdcdc; /* Light text */
+    display: flex;
+  }
+  
+  .dashboard-sidebar {
+    width: 250px;
+    background-color: #3b3b3b; /* Darker background */
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dashboard-sidebar h1 {
+    color: #f0b429; /* Metallic gold */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .dashboard-sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dashboard-sidebar nav ul li {
+    margin-bottom: 15px;
+  }
+  
+  .dashboard-sidebar nav ul li a {
+    color: #dcdcdc; /* Light text */
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .dashboard-sidebar nav ul li a:hover,
+  .dashboard-sidebar nav ul li a.active {
+    background-color: #f0b429; /* Metallic gold */
+    color: #2e2e2e; /* Dark text */
+  }
+  
+  .dashboard-main {
+    flex-grow: 1;
+    margin-left: 250px; /* Space for sidebar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: flex-start; /* Align to top */
+    box-sizing: border-box;
+  }
+  
+  .dashboard-main h2 {
+    color: #f0b429; /* Metallic gold */
+    margin-bottom: 20px;
+  }
+  
+  .user-details, .rides-section {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #3b3b3b; /* Darker background */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px; /* Add margin between sections */
+  }
+  
+  .user-details h3, .rides-section h3 {
+    color: #f0b429; /* Metallic gold */
+    margin-bottom: 15px;
+  }
+  
