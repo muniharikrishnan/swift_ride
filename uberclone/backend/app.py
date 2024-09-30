@@ -27,6 +27,16 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)  # Storing passwords in plain text
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+class Booking(db.Model):
+    __tablename__ = 'bookings'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user_details.id'), nullable=False)  # Foreign key from User
+    pickup_location = db.Column(db.String(255), nullable=False)
+    drop_location = db.Column(db.String(255), nullable=False)
+    booking_date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user = db.relationship('User', backref=db.backref('bookings', lazy=True))  # Relationship to User
+
 # Create API endpoint for signup
 @app.route('/api/signup', methods=['POST'])
 def signup():
@@ -96,6 +106,55 @@ def get_user_details():
         }), 200
     else:
         return jsonify({'message': 'User not found'}), 404
+
+# Create API endpoint for booking a ride
+@app.route('/api/bookings', methods=['POST'])
+@jwt_required()  # Ensure this route requires a valid JWT token
+def create_booking():
+    data = request.json
+    pickup_location = data.get('pickup_location')
+    drop_location = data.get('drop_location')
+
+    current_user_id = get_jwt_identity()  # Get the user ID from the token
+
+    # Validate that all fields are provided
+    if not all([pickup_location, drop_location]):
+        return jsonify({'message': 'Missing required fields'}), 400
+
+    # Create a new booking and add to the session
+    new_booking = Booking(
+        user_id=current_user_id,
+        pickup_location=pickup_location,
+        drop_location=drop_location
+    )
+
+    try:
+        db.session.add(new_booking)
+        db.session.commit()
+        return jsonify({'message': 'Booking created successfully', 'booking_id': new_booking.id}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Failed to create booking', 'error': str(e)}), 500
+
+# Create API endpoint to fetch bookings for the current user
+@app.route('/api/bookings', methods=['GET'])
+@jwt_required()  # Ensure this route requires a valid JWT token
+def get_bookings():
+    current_user_id = get_jwt_identity()  # Get the user ID from the token
+    bookings = Booking.query.filter_by(user_id=current_user_id).all()
+
+    booking_list = [{
+        'id': booking.id,
+        'pickup_location': booking.pickup_location,
+        'drop_location': booking.drop_location,
+        'booking_date': booking.booking_date
+    } for booking in bookings]
+
+    return jsonify({'bookings': booking_list}), 200
+
+# Ensure tables are created
+with app.app_context():
+    db.create_all()
 
 # Ensure tables are created
 with app.app_context():
