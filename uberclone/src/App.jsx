@@ -10,7 +10,6 @@ import RideBooked from './components/RideBooked';
 import Wallet from './components/Wallet';
 import { Modal, Button } from 'react-bootstrap';
 
-
 // Importing assets for vehicle images
 import tukTukImage from './assets/TukTuk_Green_v1.png';
 import uberGoImage from './assets/UberGo_v1.png';
@@ -18,7 +17,7 @@ import primeSUVImage from './assets/package_UberComfort_new_2022.png';
 import bikeImage from './assets/Uber_Moto_India1.png';
 import Account from './components/Account'; // Adjust the path as necessary
 import Signup from './components/Signup';
-import Login from './components/Login'
+import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
 // Initialize Socket.IO client
@@ -140,7 +139,7 @@ const Home = () => {
           const rideData = { pickup, dropoff, fare: calculatedFare, vehicle: selectedVehicle };
 
           try {
-            const response = await fetch('/api/book_ride', {
+            const response = await fetch('http://localhost:5001/api/book_ride', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -233,76 +232,51 @@ const Home = () => {
               {vehicleTypes.map((vehicle, index) => (
                 <div className="vehicle" tabIndex="0" key={index} onClick={() => setSelectedVehicle(vehicle.name)}>
                   <img src={vehicle.image} alt={vehicle.name} />
-                  <div className="details">
-                    <h3>{vehicle.name}</h3>
-                    <p>4 mins away</p>
-                    <h5>No bargaining, doorstep pick-up</h5>
+                  <div className="vehicle-details">
+                    <h5>{vehicle.name}</h5>
+                    <p>Base Fare: ₹ {vehicle.baseFare}</p>
+                    <p>Fare per Km: ₹ {vehicle.farePerKm}</p>
                   </div>
-                  <h4>{vehicle.name === selectedVehicle ? fare || `₹${vehicle.baseFare}` : `₹${vehicle.baseFare}`}</h4>
                 </div>
               ))}
-              <div className="payment">
-                <a href="#" onClick={handlePaymentClick}>
-                  <FontAwesomeIcon icon={faWallet} /> Add Payment Method
-                </a>
-                <div className="req">
-                  <button onClick={requestAuto}>Request {selectedVehicle}</button>
-                  <p>{responseMessage}</p> {/* Show response message */}
-                </div>
+              <div className="fare-display">
+                <h4>Estimated Fare: {fare || 'Calculating...'}</h4>
+                <h4>Distance: {distance} km</h4>
               </div>
+              <button className="btn btn-warning" id="request-ride" onClick={requestAuto}>
+                Request Ride
+              </button>
+              <button className="btn btn-secondary" id="payment" onClick={handlePaymentClick}>
+                Payment
+              </button>
+              <PaymentModal show={modalShow} onHide={() => setModalShow(false)} />
             </div>
           </div>
         )}
-
-        <div className="col-sm-5 map">
-          <div id="map" style={{ height: '100%', width: '100%' }}></div> {/* Google Maps container */}
+        
+        <div className="col-sm-5 r" id="map">
+          <h2 style={{ marginBottom: '30px' }}>Map</h2>
         </div>
       </div>
-
-      <PaymentModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 };
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <div>
-        <header className="header">
-          <nav className="navbar">
-            <Link to="/" className="logo">TAXI</Link>
-            <Link to="/"><FontAwesomeIcon icon={faCar} style={{ color: '#f0b429' }} /> Ride</Link>
-          </nav>
-          <div className="navbar2">
-            <Link to="/trips">My Trips</Link>
-            <div className="dropdown">
-              <button className="btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <FontAwesomeIcon icon={faUser} style={{ fontSize: '1.75rem', color: '#f0b429' }} />
-              </button>
-              <div className="dropdown-content">
-                <Link className="dropdown-item" to="/wallet"><FontAwesomeIcon icon={faWallet} /> Wallet</Link>
-                <Link className="dropdown-item" to="/promos"><FontAwesomeIcon icon={faTag} /> Promos</Link>
-                <Link className="dropdown-item" to="/account"><FontAwesomeIcon icon={faUser} /> Manage account</Link>
-                <Link className="dropdown-item" to="/support"><FontAwesomeIcon icon={faHeadset} /> Support</Link>
-                <Link className="dropdown-item" to="/settings"><FontAwesomeIcon icon={faGear} /> Settings</Link>
-                
-              </div>
-            </div>
-          </div>
-        </header>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/trips" element={<MyTrips />} />
-          <Route path="/ride-booked" element={<RideBooked />} />
-          <Route path="/wallet" element={<Wallet />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard/>}></Route>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/my-trips" element={<MyTrips />} />
+        <Route path="/ride-booked" element={<RideBooked />} />
+        <Route path="/wallet" element={<Wallet />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
