@@ -78,4 +78,90 @@
     color: #f0b429; /* Metallic gold */
     margin-bottom: 15px;
   }
+
+  .dashboard-sidebar nav ul li a.active {
+    background-color: #f0b429; /* Metallic gold */
+    color: #2e2e2e; /* Dark text */
+    font-weight: bold; /* Make it bold to highlight the active section */
+  }
+  
+  .profile-section {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #3b3b3b; /* Darker background to match the dashboard */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px; /* Space between sections */
+  }
+  
+  .profile-section h3 {
+    color: #f0b429; /* Metallic gold for section title */
+    margin-bottom: 15px;
+  }
+  
+  .profile-section p {
+    color: #dcdcdc; /* Light text color for readability */
+    margin: 5px 0; /* Space between paragraphs */
+  }
+  
+  .rides-section {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #3b3b3b; /* Darker background to match the dashboard */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px; /* Space between sections */
+  }
+  
+  .rides-section h3 {
+    color: #f0b429; /* Metallic gold for section title */
+    margin-bottom: 15px;
+  }
+  
+  .rides-section ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+  }
+  
+  .rides-section ul li {
+    background: #4a4a4a; /* Slightly lighter background for ride items */
+    color: #dcdcdc; /* Light text color for readability */
+    padding: 10px; /* Internal spacing for items */
+    margin-bottom: 10px; /* Space between items */
+    border-radius: 5px; /* Rounded corners for items */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .rides-section ul li:hover {
+    background: #f0b429; /* Metallic gold on hover */
+    color: #2e2e2e; /* Dark text on hover for contrast */
+  }
+  
+  .rides-section p {
+    color: #dcdcdc; /* Light text color for readability */
+    margin: 5px 0; /* Space between paragraphs */
+  }
+  
+  .user-details {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #3b3b3b; /* Darker background to match the dashboard */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px; /* Space between sections */
+  }
+  
+  .user-details h3 {
+    color: #f0b429; /* Metallic gold for section title */
+    margin-bottom: 15px;
+  }
+  
+  .user-details p {
+    color: #dcdcdc; /* Light text color for readability */
+    margin: 5px 0; /* Space between paragraphs */
+  }
+  
   

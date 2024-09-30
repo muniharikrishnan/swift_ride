@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import '../styles//Dashboard.css'; // Ensure you import the CSS file
+import '../styles/Dashboard.css'; // Ensure you import the CSS file
 
 const Dashboard = () => {
   const [rides, setRides] = useState([]);
   const [user, setUser] = useState(null); // State for storing user details
   const [loading, setLoading] = useState(true); // State to track loading status
   const [error, setError] = useState('');
+  const [activeSection, setActiveSection] = useState('overview'); // State for active section
 
   useEffect(() => {
     const fetchUserAndRides = async () => {
@@ -59,9 +60,33 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         <nav>
           <ul>
-            <li><a href="#overview" className="active">Overview</a></li>
-            <li><a href="#rides">Your Rides</a></li>
-            <li><a href="#profile">Profile</a></li>
+            <li>
+              <a 
+                href="#overview" 
+                className={activeSection === 'overview' ? 'active' : ''} 
+                onClick={() => setActiveSection('overview')}
+              >
+                Overview
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#rides" 
+                className={activeSection === 'rides' ? 'active' : ''} 
+                onClick={() => setActiveSection('rides')}
+              >
+                Your Rides
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#profile" 
+                className={activeSection === 'profile' ? 'active' : ''} 
+                onClick={() => setActiveSection('profile')}
+              >
+                Profile
+              </a>
+            </li>
             <li><a href="#settings">Settings</a></li>
           </ul>
         </nav>
@@ -76,32 +101,40 @@ const Dashboard = () => {
         ) : (
           <>
             {/* Display error if any */}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {/* {error && <p style={{ color: 'white' }}>{error}</p>} */}
 
-            {/* Display user details */}
-            {user ? (
+            {/* Display content based on active section */}
+            {activeSection === 'overview' && user && (
               <section className="user-details">
                 <h3>Welcome, {user.firstName} {user.lastName}!</h3>
                 <p>Email: {user.email}</p>
                 <p>Phone: {user.phone}</p>
               </section>
-            ) : (
-              <p>Failed to load user details.</p>
             )}
 
-            {/* Display rides (if applicable) */}
-            <section className="rides-section">
-              <h3>Your Rides:</h3>
-              <ul>
-                {rides.length > 0 ? (
-                  rides.map((ride, index) => (
-                    <li key={index}>Ride ID: {ride.id}, Status: {ride.status}</li>
-                  ))
-                ) : (
-                  <p>No rides found.</p>
-                )}
-              </ul>
-            </section>
+            {activeSection === 'rides' && (
+              <section className="rides-section">
+                <h3>Your Rides:</h3>
+                <ul>
+                  {rides.length > 0 ? (
+                    rides.map((ride, index) => (
+                      <li key={index}>Ride ID: {ride.id}, Status: {ride.status}</li>
+                    ))
+                  ) : (
+                    <p>No rides found.</p>
+                  )}
+                </ul>
+              </section>
+            )}
+
+            {activeSection === 'profile' && user && (
+              <section className="profile-section">
+                <h3>User Profile</h3>
+                <p>Name: {user.firstName} {user.lastName}</p>
+                <p>Email: {user.email}</p>
+                <p>Phone: {user.phone}</p>
+              </section>
+            )}
           </>
         )}
       </div>
