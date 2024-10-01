@@ -19,6 +19,8 @@ import Account from './components/Account'; // Adjust the path as necessary
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { Dropdown } from 'react-bootstrap';
 
 // Initialize Socket.IO client
 const socket = io('http://localhost:5000'); // Replace with your backend URL
@@ -50,6 +52,7 @@ const Home = () => {
   const [fare, setFare] = useState(null);
   const [distance, setDistance] = useState(0);
   const [selectedVehicle, setSelectedVehicle] = useState('Auto'); // Default vehicle
+
 
   // Define available vehicle types
   const vehicleTypes = [
@@ -262,9 +265,39 @@ const Home = () => {
   );
 };
 
+const Navbar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        {/* Start Ride button on the left */}
+        <Link to="/" className="navbar-brand">
+          Start Ride
+        </Link>
+
+        {/* Profile Icon and Dropdown on the right */}
+        <div className="ml-auto">
+          <Dropdown>
+            <Dropdown.Toggle variant="light" id="dropdown-basic">
+              <FontAwesomeIcon icon={faUserCircle} size="2x" />
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu align="end">
+              <Dropdown.Item as={Link} to="/account">Manage Account</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/wallet">Wallet</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/my-trips">Ride History</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+
 const App = () => {
   return (
     <Router>
+       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/my-trips" element={<MyTrips />} />
