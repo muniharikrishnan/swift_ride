@@ -9,6 +9,7 @@
     html{
         /* background-color: #2e2e2e; */
         min-height: 100%;
+        max-width: fit-content;
     }
 
     body{
